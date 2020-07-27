@@ -104,14 +104,24 @@ function locationDetail(location, lastDate, caseInfo, rating, crosscheckReport) 
   //   html += renderCaseInfo('Currently hospitalized', caseInfo.hospitalized - caseInfo.discharged, 'ca-Hospitalized');
   // }
   html += `</div>
-    <div class="col-xs-12 col-md-7 col-lg-8">
-      <h2 class="spectrum-Heading spectrum-Heading--M">Trends</h1>
-      <!-- <div id="graph" class="ca-Graph"></div> -->
-      <div id="graph-elements">
-        <div id="graph-container">
-          <canvas id="graph"></canvas>
+    <div class="col-xs-12 col-md-7 col-lg-8 graph-container">
+      <h2 class="spectrum-Heading spectrum-Heading--M">Timeline</h1>
+      <div class="graph-button-container">
+        <div class="graph-button-container-overview">
+          <sp-button variant="primary" id="graph-btn-overview">Overview</sp-button>
+          <sp-button variant="primary" id="graph-btn-daily">Daily Statistics</sp-button>
+        </div>
+        <div class="graph-button-container-daily">
+          <sp-button variant="secondary" id="graph-btn-linear">Linear</sp-button>
+          <sp-button variant="secondary" id="graph-btn-log">Logarithmic</sp-button>
         </div>
       </div>
+      <div class="graph-legend">
+        <div class="graph-legend-key-container">
+        <strong>Key:</strong>
+        </div>
+      </div>
+      <div id="graph" class="ca-Graph"></div>
     </div>
   </div>
   <div class="row">
@@ -213,8 +223,8 @@ ${header({ selectedPage: '' })}
     <script src="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js"></script>
     <script src='https://api.mapbox.com/mapbox.js/plugins/geojson-extent/v0.0.1/geojson-extent.js'></script>
 
-    <!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script> -->
     <script src="${arc.static('location.js')}"></script>
     <script>
       window.showLocation({
